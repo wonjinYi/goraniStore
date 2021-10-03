@@ -1,6 +1,8 @@
 # goraniStore
 **고라니와 함께하는 즐거운 localStorage생활**
+
 ![deer](./sample/deer.png)
+
 ![mit](https://img.shields.io/github/license/wonjinYi/goraniStore)
 
 
