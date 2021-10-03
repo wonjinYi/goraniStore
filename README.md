@@ -11,9 +11,15 @@
 
 goraniStore를 활용한 예제는 [여기](https://wonjinyi.github.io/goraniStore/sample/sample.html)에서 확인하실 수 있습니다.
 
+## CDN link
+아래 링크를 통해 goraniStore를 바로 불러오실 수 있습니다.
+```
+https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@main/src/goraniStore.js
+```
+
 ## 한 눈에 보는 코드 예제
 ```js
-import { goraniStore } from './goraniStore.js';
+import { goraniStore } from 'https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@main/src/goraniStore.js';
 
 const storeList = {
     "item_1": {
