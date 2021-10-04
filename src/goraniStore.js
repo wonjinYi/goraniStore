@@ -22,8 +22,6 @@ class goraniStore {
 
     //methods : set, get, info
     set(newValue) {
-        const stringified = String(newValue);
-
         // Check if the type of new value(you want to save) matches goraniStore Object's.
         // If not, set() can't save new value to this Object
         if (isValid({ value: newValue, type: this.type })) {
@@ -33,8 +31,6 @@ class goraniStore {
         } else {
             console.error(`[GoraniStore:set]Types are not matched --- ${this.key}`);
         }
-
-
     };
 
     get() {
@@ -65,6 +61,7 @@ class goraniStore {
             type: this.type,
             value: this.value,
         };
+        
         return itemInfo;
     }
 };
