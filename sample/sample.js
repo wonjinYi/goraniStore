@@ -1,5 +1,5 @@
 import { goraniStore } from 'https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@main/src/goraniStore.js';
-import { parseBool } from '../src/parseBool.js';
+import { parseBool } from './parseBool.js';
 
 const sampleJson = {
     "item_1": {
