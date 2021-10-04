@@ -20,7 +20,7 @@ class goraniStore {
         this.type = item.type;
 
         // save the defaultValue if there isn't item in localStorage
-        const currentValue = this.get(this.key);
+        const currentValue = this.getFromLocalStorage();
         if (currentValue === null) {
             this.set(item.defaultValue);
         } else {
