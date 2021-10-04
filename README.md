@@ -23,14 +23,14 @@ import { goraniStore } from 'https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@ma
 
 const storeList = {
     "item_1": {
-        "key": "GoraniStore_Sample_boolean",
+        "key": "GoraniStore_Sample_Boolean",
         "defaultValue": true,
-        "type": "boolean"
+        "type": "Boolean"
     }, 
     "item_2" : {
         "key": "GoraniStore_Sample_Number",
         "defaultValue" : 53,
-        "type": "number"
+        "type": "Number"
     }
 };
 
@@ -46,8 +46,8 @@ console.log(numGorani.set()); // 5353
 
 console.log(boolGorani.info());
 // {
-//     key : "GoraniStore_Sample_boolean",
-//     type : "boolean",
+//     key : "GoraniStore_Sample_Boolean",
+//     type : "Boolean",
 //     value : false
 // }
 ```
@@ -59,9 +59,9 @@ console.log(boolGorani.info());
 ```json
 storeList = {
     "item_1": {
-        "key": "GoraniStore_Sample_num",
+        "key": "GoraniStore_Sample_Num",
         "defaultValue": 53,
-        "type": "number"
+        "type": "Number"
     }
 }
 ```
@@ -69,11 +69,13 @@ storeList = {
 goraniStore를 사용하려면 우선, localStorage에 등록할 아이템들의 정보를 입력해야합니다. 
 이 정보는 새로운 goraniStore객체를 생성하고 초기화하는 데에 사용됩니다.
 
-들어가야하는 내용은 localStorage에서 사용할 key의 이름, 기본값 , 그리고 자료형입니다.
-자료형은 아래 세 가지 가운데에서 고를 수 있습니다.
-* number
-* string
-* boolean
+들어가야하는 내용은 localStorage에서 사용할 key의 이름, 기본값, 그리고 자료형입니다.
+자료형은 아래 다섯 가지 가운데에서 고를 수 있습니다.
+* Number
+* String
+* Boolean
+* Object
+* Array
 
 
 ### constructor
@@ -99,7 +101,8 @@ const newItem = new goraniStore(storeList.item_1);
 이 세 가지의 값을 확인하려면 ``info()`` method를 사용할 수 있습니다.
 
 ### method
-goraniStore객체는 세 가지의 method를 제공합니다.
+goraniStore객체는 네 가지의 method를 제공합니다. 
+
 ##### get()
 * 설명 : 해당 객체의 value 프로퍼티를 얻습니다.
 * 인수 : (없음)
@@ -123,6 +126,12 @@ goraniStore객체는 세 가지의 method를 제공합니다.
     value : this.value,
 }
 ```
+
+##### getFromLocalStorage(key)
+* 경고 : getFromLocalStorage(key)는 goraniStore내부에서 사용하는 기능으로, 사용자가 직접 호출하지 말 것을 권장합니다.
+* 설명 : localStorage에서 해당 객체가 가진 key에 해당하는 데이터 값을 알맞게 파싱하여 획득합니다.
+* 인수 : localStorage key
+* 반환값 : key에 해당하는 localStorage 내부 데이터의 파싱처리된 값
 
 ## 도움받은 곳
 <div>deer Icon made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
