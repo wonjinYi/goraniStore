@@ -1,31 +1,32 @@
-import { goraniStore } from 'https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@dev/src/goraniStore.js';
+//import { goraniStore } from 'https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@dev/src/goraniStore.js';
+import { goraniStore } from './temp_goranistore/temp_goranistore.js';
 import { parseBool } from './parseBool.js';
 
 const sampleJson = {
     "item_1": {
         "key": "GoraniStore_Sample_key(1)",
         "defaultValue": true,
-        "type": "boolean"
+        "type": "Boolean"
     },
     "item_2": {
         "key": "GoraniStore_Sample_key(2)",
         "defaultValue": 10,
-        "type": "number"
+        "type": "Number"
     },
     "item_3": {
         "key": "GoraniStore_Sample_key(3)",
         "defaultValue": "store",
-        "type": "string"
+        "type": "String"
     },
     "item_4": {
         "key": "GoraniStore_Sample_key(4)",
         "defaultValue": {a:5, b:3, c:53},
-        "type": "object"
+        "type": "Object"
     },
-    "item_3": {
-        "key": "GoraniStore_Sample_key(4)",
+    "item_5": {
+        "key": "GoraniStore_Sample_key(5)",
         "defaultValue": [5,3,53,5353],
-        "type": "array"
+        "type": "Array"
     }
 }
 
@@ -65,8 +66,8 @@ const updateValues = () => {
     $boolValue.textContent = boolGorani.get();
     $numValue.textContent = numGorani.get();
     $strValue.textContent = strGorani.get();
-    $objValue.textContent = objGorani.get();
-    $arrValue.textContent = arrGorani.get();
+    $objValue.textContent = JSON.stringify(objGorani.get());
+    $arrValue.textContent = JSON.stringify(arrGorani.get());
 }
 
 const handleChange = (e) => {
