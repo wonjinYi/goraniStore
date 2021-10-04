@@ -1,5 +1,4 @@
-//import sampleJson from './sample.json' assert { type: "json" };
-import { goraniStore } from '../src/goraniStore.js';
+import { goraniStore } from 'https://cdn.jsdelivr.net/gh/wonjinYi/goraniStore@main/src/goraniStore.js';
 import { parseBool } from '../src/parseBool.js';
 
 const sampleJson = {
