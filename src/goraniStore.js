@@ -1,5 +1,13 @@
 import { parseBool } from './parseBool.js';
 
+const typedef = {
+    boolean : 'Boolean',
+    number : 'Number',
+    string : 'String',
+    object : 'Object',
+    array : 'Array'
+};
+
 class goraniStore {
     // properties
     key = null;
@@ -26,7 +34,7 @@ class goraniStore {
         // If not, set() can't save new value to this Object
         if (isValid({ value: newValue, type: this.type })) {
             localStorage.setItem(this.key, String(newValue));
-            this.value = this.get();
+            this.value = this.getFromLocalStorage();
             return this.value;
         } else {
             console.error(`[GoraniStore:set]Types are not matched --- ${this.key}`);
@@ -34,26 +42,41 @@ class goraniStore {
     };
 
     get() {
+        if(this.value==null){
+            console.error(`[GoraniStore:get]The property 'value' has no valid value --- ${this.key}`);
+            return null;
+        } else {
+            return this.value;
+        }
+    };
+
+    getFromLocalStorage() {
         const raw = localStorage.getItem(this.key);
         let result = null;
 
         switch (this.type) {
-            case 'boolean':
+            case typedef.boolean:
                 result = parseBool(raw);
                 break;
-            case 'string':
+            case typedef.string:
                 result = raw;
                 break;
-            case 'number':
+            case typedef.number:
                 result = Number(raw);
                 break;
+            case typedef.object:
+                result = JSON.parse(raw);
+                break;
+            case typedef.array:
+                result = JSON.parse(raw);
+                break;
             default:
-                console.error(`[GoraniStore:get]Unexpected type --- ${this.key}`);
+                console.error(`[GoraniStore:getFromLocalStorage]Unexpected type --- ${this.key}`);
                 return;
         }
 
         return result;
-    };
+    }
 
     info() {
         const itemInfo = {
@@ -67,16 +90,17 @@ class goraniStore {
 };
 
 const isValid = ({value, type}) => {
-    // Check type.
-    if (typeof value != type) {
+    // Check type
+    if (getType(value) != type) {
         return false;
     }
 
-    // Check If given value is not 'NaN, undefined, null'.
+    // Check If given value is not 'NaN'
     if(typeof value === 'number' && isNaN(value)){
         return false;
     }
 
+    // Check If given value is not 'undefined, null'
     const checkList = [undefined, null];
     for (let i = 0; i < checkList.length; i++) {
         if (value === checkList[i]) {
@@ -84,8 +108,13 @@ const isValid = ({value, type}) => {
         }
     }
 
-    //Passed All checking.
+    //Passed All checking
     return true;
+}
+
+function getType(obj){
+    // getClassType : Number, Boolean, String, Object, Array
+    return Object.prototype.toString.call(obj).slice(8,-1);
 }
 
 export { goraniStore };
