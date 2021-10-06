@@ -1,9 +1,9 @@
 const typedef = {
-    boolean : 'Boolean',
-    number : 'Number',
-    string : 'String',
-    object : 'Object',
-    array : 'Array'
+    Boolean : 'Boolean',
+    Number : 'Number',
+    String : 'String',
+    Object : 'Object',
+    Array : 'Array'
 };
 
 class goraniStore {
